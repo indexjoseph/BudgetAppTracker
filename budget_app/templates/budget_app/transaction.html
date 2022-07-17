@@ -1,0 +1,39 @@
+{% extends 'budget_app/base.html' %}
+{% block content %}
+
+<h1> {{transaction}}</h1>
+
+<a href="{% url 'budget_app:new_entry' transaction.id%}">Add a new entry</a>
+
+<table class ="table table-striped"> 
+    <thead>
+        <tr>
+            <th>Merchant</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Delete Entry</th>
+        </tr>
+    </thead>
+<ul>
+    <tbody>
+    {% for entry in entries %}
+        <tr>
+            <td>{{ entry.merchant|linebreaks }}</td>
+            <td>{{ entry.description|linebreaks }}</td>
+            <td>{{ entry.transaction_amount|linebreaks }}</td>
+            <td>{{ entry.date_added|date:'M d, Y H:i' }}</td>
+
+            <td><a href="{% url 'budget_app:delete_entry' entry.id %}">Delete</a></td> 
+        </tr>
+    {% empty %}
+        <li>
+            There are not entries for this topic yet.
+        </li>
+{% endfor %}
+    </tbody>
+</table>
+</ul>
+
+
+{% endblock content %}
