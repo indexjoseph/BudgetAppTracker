@@ -1,6 +1,5 @@
 {% extends 'budget_app/base.html' %}
 {% block content %}
-
 <h1> {{transaction}}</h1>
 
 <a href="{% url 'budget_app:new_entry' transaction.id%}">Add a new entry</a>
