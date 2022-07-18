@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ph$n5@(j--cc+%7luapg0a^4x9o@wq#hvx47as54wo=4ma=rpq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -101,7 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+ALLOWED_HOSTS = ['*'] 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -121,6 +121,23 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https') 
+
+#Allow all host headers 
+
+ALLOWED_HOSTS = ['*'] 
+
+
+
+#Static asset configuration 
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__)) 
+
+STATIC_ROOT = 'staticfiles' 
+
+STATIC_DIRS = ( 
+os.path.join(BASE_DIR, 'static',) 
+)
 BOOTSTRAP3 = {
     'include_jquery': True,
 }
